@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Value Flows">
+  <meta name="keywords" content="Batch Online RL">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+  <title>Value Flows</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <style>
+    .publication-title { font-size: 3rem; font-weight: bold; }
+    .publication-authors { margin-top: 1rem; }
+    .author-block { display: inline-block; margin: 0 0.5rem; }
+    .publication-links { margin-top: 1.5rem; }
+    .link-block { margin: 0.25rem; }
+    .content.has-text-justified { text-align: justify; }
+    .publication-image { margin: 2rem 0; }
+    hr.rounded { border: 2px solid #e5e5e5; border-radius: 5px; margin: 3rem 0; }
+    .hidden { display: none; }
+    .toggle-link { color: #3273dc; text-decoration: underline; cursor: pointer; display: inline-block; margin-bottom: 1rem; }
+    .toggle-link:hover { color: #1f5bb8; }
+    .table-image-container { margin: 1.5rem 0; }
+    .table-image-container img { width: 100%; height: auto; }
+    .charts-container { margin: 1.5rem 0; }
+    .charts-container img { width: 100%; height: auto; }
+    .caption-text { margin: 1rem 0; font-style: italic; }
+    .benefits-list { margin: 1rem 0 1rem 2rem; }
+    .benefits-list li { margin: 0.5rem 0; }
+    .task-selector { margin: 2rem 0; }
+    .task-selector .button { margin: 0.25rem; }
+    .video-container { margin: 2rem 0; }
+    .video-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; }
+    .video-wrapper { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .video-item { flex: 1; min-width: 250px; max-width: 350px; }
+    .video-item video { width: 100%; height: auto; border-radius: 8px; }
+    .video-label { text-align: center; margin-top: 0.5rem; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Value Flows</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://dblp.org/pid/323/8972.html">Perry Dong*</a>,</span>
+            <span class="author-block"><a href="https://chongyi-zheng.github.io/">Chongyi Zheng*</a>,</span>
+            <span class="author-block"><a href="https://ai.stanford.edu/~cbfinn/">Chelsea Finn</a>,</span>
+            <span class="author-block"><a href="https://dorsa.fyi/">Dorsa Sadigh</a>,</span>
+            <span class="author-block"><a href="https://ben-eysenbach.github.io/">Benjamin Eysenbach</a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Stanford University, Princeton University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+                <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>ArXiv</span>
+                </a>
+                <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-code"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+While most reinforcement learning methods today flatten the distribution of future returns to a single scalar value, distributional RL methods exploit the return distribution to provide stronger learning signals and to enable applications in exploration and safe RL. While the predominant method for estimating the return distribution is by modeling it as a categorical distribution over discrete bins or estimating a finite number of quantiles, such approaches leave unanswered questions about the fine-grained structure of the return distribution and about how to distinguish states with high return uncertainty for decision-making. The key idea in this paper is to use modern, flexible flow-based models to estimate the full future return distributions and identify those states with high return variance. We do so by formulating a new flow-matching objective that generates probability density paths satisfying the distributional Bellman equation. Building upon the learned flow models, we estimate the return uncertainty of distinct states using a new flow derivative ODE. We additionally use this uncertainty information to prioritize learning a more accurate return estimation on certain transitions. We compare our method (Value Flows) with prior methods in the offline and online-to-online settings. Experiments on 37 state-based and 25 image-based benchmark tasks demonstrate that Value Flows achieves a 1.3x improvement on average in success rates.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="publication-image" align="center">
+          <img src="static/images/value_flows.jpg" alt="Teaser image" width="60%">
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Overview</h2>
+
+        <div class="publication-image" align="center">
+          <img src="static/images/value_flows.jpg" alt="Teaser image" width="60%">
+        </div>
+        
+        <div class="content has-text-justified">
+          <p>
+            Value Flows is a framework for modeling the return distribution using modern, flexible flow-based models.
+          </p>
+          
+          <p><b>Problem:</b> predominant methods for estimating the return distribution
+model it as a categorical distribution over discrete bins or estimating a
+finite number of quantiles, leaving questions unanswered about the
+fine-grained structure of the return distribution and about how to distinguish states
+with high return uncertainty for decision-making.</p>
+
+          <p><b>Key idea:</b> formulate a distributional flow-matching objective that generates probability density paths satisfying the distributional Bellman equation automatically, which can be used to estimate the full future return distributions and identify those states with high return variance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Algorithm</h2>   
+        
+        <a href="#" class="toggle-link" id="toggleTable3">
+          Click to see the full algorithm
+        </a>
+
+        <div id="tableContainer3" class="hidden">
+          <div class="table-image-container">
+            <img src="static/images/algorith.png" alt="Alg">
+          </div>
+        </div>
+        
+        <br><br>
+
+        
+
+        <p>The objective of Value Flows consists of three main components: (1) the vector field estimating the
+return distribution, (2) the confidence weight incorporating aleatoric uncertainty, and (3) the flow
+policy selecting actions.</p>
+
+        <br>
+
+
+        <p><b>Vector field: </b> Distributional conditional flow matching (DCFM) + \( \lambda \) Bootstrapped conditional flow matching (BCFM) </p>
+
+         <img src="./static/images/conditional.png" width="100%">
+         <img src="./static/images/bootstrapped.png" width="80%">
+        
+
+         <p><b>Confidence weight: </b> We incorporate the return uncertainty information into Value Flows to prioritize
+learning a more accurate return distribution at certain transitions: a higher return variance indicates a
+demand for more accurate return estimation at that transition. We estimate the return variance \( \text{Var}(Z^{\pi}(s, a)) \) using a first-order Taylor approximation on the corresponding (diffeomorphic) flow \( \phi: \mathbb{R} \times [0, 1] \times \mathcal{S} \times \mathcal{A} \to \mathbb{R} \) of the vector field \( v \).</p>
+
+          <br>
+          <div align="center">
+         <img src="./static/images/prop_3.png" width="70%">
+         </div>
+
+         <br>
+
+         <p>We define the confidence weight \( w(s, a, \epsilon) = \sigma \left( - \tau \left/ \left\lvert \frac{\partial \phi}{\partial \epsilon} (\epsilon \mid 1, s, a) \right\rvert \right. \right) + 0.5 \) and apply this weighting to the vector field loss. </p>
+
+
+        <br>
+
+
+        <p><b>Policy selecting action: </b> We consider two different behavioral-regularized policy extraction strategies for offline RL and offline-to-online RL. First, for offline RL, we use rejection sampling to maximize Q estimates while implicitly imposing a KL constraint toward a fixed behavioral cloning (BC) policy. Second, for online fine-tuning in offline-to-online RL, following <a src="https://arxiv.org/abs/2502.02538">prior work</a>, we learn a stochastic one-step policy to maximize the Q estimates while distilling it toward the fixed BC flow policy. </p>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Experiments</h2>  
+        
+        <h3 class="title is-4">Offline RL</h3>
+
+        <div class="table-image-container">
+            <img src="static/images/results_table_avg.png" alt="Offline RL results table aggregated across domains">
+          </div>
+        
+        <a href="#" class="toggle-link" id="toggleTable">
+          Click to see the full table (<span id="taskCount">62</span> tasks)
+        </a>
+
+        <div id="tableContainer" class="hidden">
+          <div class="table-image-container">
+            <img src="static/images/results_table.png" alt="Offline results table">
+          </div>
+
+        </div>
+
+        <p class="caption-text">
+          <strong>Offline RL results averaged over 8 seeds on 62 continous control tasks from OGBench and D4RL.</strong>
+        </p>
+
+        <ul class="benefits-list">
+          <li>Value flows achieves the best or near-best performance on 9 out of 11 domains. </li>
+          <li>On those more challenging state-based tasks, Value Flows achieves 1.6× higher success rates than the best performing baseline.</li>
+        </ul>
+
+        <br><br>
+
+        <h3 class="title is-4">Offline-to-online RL</h3>
+
+        <!-- <div class="table-image-container" width="10%">
+            <img src="static/images/offline_to_online_together.jpg" alt="Online RL results table">
+          </div> -->
+
+        <div class="publication-image" align="center">
+          <img src="static/images/offline_to_online_together.jpg" alt="Online RL results table" width="60%">
+        </div>
+        
+        <a href="#" class="toggle-link" id="toggleTable2">
+          Click to see the full table (<span id="taskCount2">6</span> tasks)
+        </a>
+
+        <div id="tableContainer2" class="hidden">
+          <div class="table-image-container">
+            <img src="static/images/online_results_table.png" alt="Online RL results table">
+          </div>
+
+          <div class="charts-container">
+            <img src="static/images/offline_to_online.jpg" alt="Online training curves">
+          </div>
+        </div>
+
+        <p class="caption-text">
+          <strong>Offline-to-online RL results averaged over 8 seeds on 6 continous control tasks from OGBench.</strong>
+        </p>
+
+        <ul class="benefits-list">
+          <li>Value Flows demonstrates strong performance in online settings and achieves the best performance averaged over all the environments.</li>
+          <li>Value Flows can be used without any modifications to the vector field objective.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Sample Rollouts</h2>
+        <p>
+          Select one of the tasks below to view trajectories at the beginning, middle, and end of running batch online RL.
+          <br><br>
+        </p>
+        <div class="content has-text-justified">
+          <div class="task-selector has-text-centered">
+            <button class="button is-light" onclick="changeTask('lift', 'static/videos/lift_start.mp4', 'static/videos/lift_mid.mp4', 'static/videos/lift_last.mp4')">Lift</button>
+            <button class="button is-light" onclick="changeTask('can', 'static/videos/can_start.mp4', 'static/videos/can_mid.mp4', 'static/videos/can_last.mp4')">Can</button>
+            <button class="button is-light" onclick="changeTask('square', 'static/videos/square_start.mp4', 'static/videos/square_mid.mp4', 'static/videos/square_last.mp4')">Square</button>
+            <button class="button is-light" onclick="changeTask('tape', 'static/videos/tape_start.mp4', null, 'static/videos/tape_last.mp4')">Tape</button>
+          </div>
+          
+          <center>
+            <div id="task-video" class="video-container">
+              <h4 id="video-title" class="video-title"></h4>
+              <div class="video-wrapper">
+                <div class="video-item" id="task-video-item-1">
+                  <video id="task-video-player-1" autoplay loop muted controls>
+                    <source src="" type="video/mp4">
+                  </video>
+                  <div class="video-label">Beginning (1x)</div>
+                </div>
+                <div class="video-item" id="task-video-item-2">
+                  <video id="task-video-player-2" autoplay loop muted controls>
+                    <source src="" type="video/mp4">
+                  </video>
+                  <div class="video-label">Middle (1x)</div>
+                </div>
+                <div class="video-item" id="task-video-item-3">
+                  <video id="task-video-player-3" autoplay loop muted controls>
+                    <source src="" type="video/mp4">
+                  </video>
+                  <div class="video-label">End (1x)</div>
+                </div>
+              </div>
+            </div>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>Add bibtex after arxiv</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 License</a>,
+            courtesy of <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, <a href="https://peract.github.io/">PerAct</a>, and <a href="https://emprise.cs.cornell.edu/flair/">FLAIR</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function changeTask(taskName, startVideo, midVideo, lastVideo) {
+    const title = document.getElementById('video-title');
+    const player1 = document.getElementById('task-video-player-1');
+    const player2 = document.getElementById('task-video-player-2');
+    const player3 = document.getElementById('task-video-player-3');
+    const item2 = document.getElementById('task-video-item-2');
+    
+    title.textContent = taskName.charAt(0).toUpperCase() + taskName.slice(1);
+    
+    player1.src = startVideo;
+    player1.load();
+    
+    if (midVideo) {
+      player2.src = midVideo;
+      player2.load();
+      item2.style.display = 'block';
+    } else {
+      item2.style.display = 'none';
+    }
+    
+    player3.src = lastVideo;
+    player3.load();
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleLink = document.getElementById('toggleTable');
+    const tableContainer = document.getElementById('tableContainer');
+    
+    if (toggleLink && tableContainer) {
+      let isExpanded = false;
+
+      toggleLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        isExpanded = !isExpanded;
+        
+        if (isExpanded) {
+          tableContainer.classList.remove('hidden');
+          toggleLink.innerHTML = 'Click to hide the full table (<span id="taskCount">62</span> tasks)';
+        } else {
+          tableContainer.classList.add('hidden');
+          toggleLink.innerHTML = 'Click to see the full table (<span id="taskCount">62</span> tasks)';
+        }
+      });
+    }
+
+    const toggleLink2 = document.getElementById('toggleTable2');
+    const tableContainer2 = document.getElementById('tableContainer2');
+    
+    if (toggleLink2 && tableContainer2) {
+      let isExpanded2 = false;
+
+      toggleLink2.addEventListener('click', function(e) {
+        e.preventDefault();
+        isExpanded2 = !isExpanded2;
+        
+        if (isExpanded2) {
+          tableContainer2.classList.remove('hidden');
+          toggleLink2.innerHTML = 'Click to hide the full table (<span id="taskCount2">6</span> tasks)';
+        } else {
+          tableContainer2.classList.add('hidden');
+          toggleLink2.innerHTML = 'Click to see the full table (<span id="taskCount2">6</span> tasks)';
+        }
+      });
+    }
+
+
+    const toggleLink3 = document.getElementById('toggleTable3');
+    const tableContainer3 = document.getElementById('tableContainer3');
+    
+    if (toggleLink3 && tableContainer3) {
+      let isExpanded3 = false;
+
+      toggleLink3.addEventListener('click', function(e) {
+        e.preventDefault();
+        isExpanded3 = !isExpanded3;
+        
+        if (isExpanded3) {
+          tableContainer3.classList.remove('hidden');
+          toggleLink3.innerHTML = 'Click to hide the full table (<span id="taskCount3">6</span> tasks)';
+        } else {
+          tableContainer3.classList.add('hidden');
+          toggleLink3.innerHTML = 'Click to see the full table (<span id="taskCount3">6</span> tasks)';
+        }
+      });
+    }
+
+
+  });
+</script>
+
+</body>
+</html>
