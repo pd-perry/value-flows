@@ -119,24 +119,26 @@ While most reinforcement learning methods today flatten the distribution of futu
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Overview</h2>
+        <h2 class="title is-3">Motivation</h2>
 
         <div class="publication-image" align="center">
           <img src="static/images/value_flows.jpg" alt="Teaser image" width="60%">
         </div>
         
         <div class="content has-text-justified">
-          <p>
-            Value Flows is a framework for modeling the return distribution using modern, flexible flow-based models.
-          </p>
-          
-          <p><b>Problem:</b> predominant methods for estimating the return distribution
+          <p><b>Problem:</b> Many of the recent successes in reinforcement learning have focused on estimating future returns as a single scalar. However, distributional RL methods can provide stronger learning signals through exploit the full distribution of returns. Predominant
+             methods for estimating the return distribution
 model it as a categorical distribution over discrete bins or estimating a
-finite number of quantiles, leaving questions unanswered about the
-fine-grained structure of the return distribution and about how to distinguish states
-with high return uncertainty for decision-making.</p>
+finite number of quantiles, but this leaves questions unanswered about the
+fine-grained structure of the return distribution.</p>
 
-          <p><b>Key idea:</b> formulate a distributional flow-matching objective that generates probability density paths satisfying the distributional Bellman equation automatically, which can be used to estimate the full future return distributions and identify those states with high return variance.</p>
+          <p>We propose<b> Value Flows:</b> </p>
+        
+            
+        <ul class="benefits-list">
+          <li>Value Flows is a framework for modeling the return distribution using modern, flexible flow-based models.</li>
+          <li>Value Flows optimizes a distributional flow-matching objective that generates probability density paths satisfying the distributional Bellman equation automatically, which can be used to estimate the full future return distributions.</li>
+        </ul>
         </div>
       </div>
     </div>
@@ -148,9 +150,9 @@ with high return uncertainty for decision-making.</p>
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Algorithm</h2>   
+        <h2 class="title is-3">Key Idea</h2>   
         
-        <a href="#" class="toggle-link" id="toggleTable3">
+        <!-- <a href="#" class="toggle-link" id="toggleTable3">
           Click to see the full algorithm
         </a>
 
@@ -160,7 +162,7 @@ with high return uncertainty for decision-making.</p>
           </div>
         </div>
         
-        <br><br>
+        <br><br> -->
 
         
 
@@ -171,30 +173,34 @@ policy selecting actions.</p>
         <br>
 
 
-        <p><b>Vector field: </b> Distributional conditional flow matching (DCFM) + \( \lambda \) Bootstrapped conditional flow matching (BCFM) </p>
+        <p><b>Vector field: </b> learn a vector field that generates probability density paths satisfying the distributional Bellman equation, including a regularization term for stability. </p>
+           <!-- Distributional conditional flow matching (DCFM) + \( \lambda \) Bootstrapped conditional flow matching (BCFM) </p> -->
 
-         <img src="./static/images/conditional.png" width="100%">
-         <img src="./static/images/bootstrapped.png" width="80%">
-        
-
-         <p><b>Confidence weight: </b> We incorporate the return uncertainty information into Value Flows to prioritize
-learning a more accurate return distribution at certain transitions: a higher return variance indicates a
-demand for more accurate return estimation at that transition. We estimate the return variance \( \text{Var}(Z^{\pi}(s, a)) \) using a first-order Taylor approximation on the corresponding (diffeomorphic) flow \( \phi: \mathbb{R} \times [0, 1] \times \mathcal{S} \times \mathcal{A} \to \mathbb{R} \) of the vector field \( v \).</p>
-
-          <br>
-          <div align="center">
-         <img src="./static/images/prop_3.png" width="70%">
-         </div>
+         <!-- <img src="./static/images/conditional.png" width="100%">
+         <img src="./static/images/bootstrapped.png" width="80%"> -->
 
          <br>
+        
 
-         <p>We define the confidence weight \( w(s, a, \epsilon) = \sigma \left( - \tau \left/ \left\lvert \frac{\partial \phi}{\partial \epsilon} (\epsilon \mid 1, s, a) \right\rvert \right. \right) + 0.5 \) and apply this weighting to the vector field loss. </p>
+         <p><b>Confidence weight: </b> use return uncertainty information to prioritize
+learning a more accurate return distribution at certain transitions: a higher return variance indicates a
+demand for more accurate return estimation at that transition. </p>
+<!-- We estimate the return variance \( \text{Var}(Z^{\pi}(s, a)) \) using a first-order Taylor approximation on the corresponding (diffeomorphic) flow \( \phi: \mathbb{R} \times [0, 1] \times \mathcal{S} \times \mathcal{A} \to \mathbb{R} \) of the vector field \( v \).</p> -->
+
+          <br>
+          <!-- <div align="center">
+         <img src="./static/images/prop_3.png" width="70%">
+         </div> -->
+
+         <!-- <br> -->
+
+         <!-- <p>We define the confidence weight \( w(s, a, \epsilon) = \sigma \left( - \tau \left/ \left\lvert \frac{\partial \phi}{\partial \epsilon} (\epsilon \mid 1, s, a) \right\rvert \right. \right) + 0.5 \) and apply this weighting to the vector field loss. </p> -->
 
 
-        <br>
+        <!-- <br> -->
 
 
-        <p><b>Policy selecting action: </b> We consider two different behavioral-regularized policy extraction strategies for offline RL and offline-to-online RL. First, for offline RL, we use rejection sampling to maximize Q estimates while implicitly imposing a KL constraint toward a fixed behavioral cloning (BC) policy. Second, for online fine-tuning in offline-to-online RL, following <a src="https://arxiv.org/abs/2502.02538">prior work</a>, we learn a stochastic one-step policy to maximize the Q estimates while distilling it toward the fixed BC flow policy. </p>
+        <p><b>Policy selecting action: </b> We consider two different behavioral-regularized policy extraction strategies for offline RL and offline-to-online RL. For offline RL, we use rejection sampling to maximize Q estimates while implicitly imposing a KL constraint toward a fixed behavioral cloning (BC) policy. For online fine-tuning in offline-to-online RL, following <a src="https://arxiv.org/abs/2502.02538">prior work</a>, we learn a stochastic one-step policy to maximize the Q estimates while distilling it toward the fixed BC flow policy. </p>
 
 
       </div>
@@ -271,6 +277,31 @@ demand for more accurate return estimation at that transition. We estimate the r
           <li>Value Flows demonstrates strong performance in online settings and achieves the best performance averaged over all the environments.</li>
           <li>Value Flows can be used without any modifications to the vector field objective.</li>
         </ul>
+
+        <br><br>
+
+        <h3 class="title is-4">Is Value Flows sensitive to hyperparameters? </h3>
+
+        <div class="container">
+    <div class="image-wrapper" style="display: flex; gap: 20px;">
+        <div class="image-container" style="flex: 1; text-align: center;">
+            <img src="static/images/cube-double_puzzle-3x3_steps.png" style="width: 100%;">
+            <p>Number of flow steps in the Euler method</p>
+        </div>
+        
+        <div class="image-container" style="flex: 1; text-align: center;">
+            <img src="static/images/cube-double_puzzle-3x3_rejection.png" style="width: 100%;">
+            <p>Number of candidates used in rejection sampling </p>
+        </div>
+    </div>
+    <br>
+    <ul class="benefits-list">
+          <li>Value Flows is robust to common hyperparameters such as number of flow steps and number of candidates in rejection sampling.</li>
+          <li>One only needs to tune the regularization loss coefficient and confidence weight. </li>
+        </ul>
+    <p></p>
+</div>
+
       </div>
     </div>
   </div>

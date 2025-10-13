@@ -1,74 +1,76 @@
 body {
-  font-family: 'Google Sans', sans-serif;
+    font-family: 'Google Sans', sans-serif;
+    padding: 20px;
+    background-color: #f5f5f5;
 }
 
 video {
-  border-radius: 10px;
+    border-radius: 10px;
 }
 
 .video-container {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
 }
 
 .video-title {
-  font-size: 1.2em;
-  margin-bottom: 10px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
 .video-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 20px; /* Space between videos */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 .video-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .video-wrapper video {
-  width: 480pt;
-  height: auto;
-  flex: 1 1 auto;
+    width: 480pt;
+    height: auto;
+    flex: 1 1 auto;
 }
 
 .video-divider {
-  position: absolute;
-  top: 0;
-  width: 10px;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .video-divider-left {
-  left: 33.33%;
+    left: 33.33%;
 }
 
 .video-divider-right {
-  left: 66.66%;
+    left: 66.66%;
 }
 
 .video-label {
-  margin-top: 8px;
-  font-size: 14px;
-  text-align: center;
-  color: #333; /* Adjust color as needed */
+    margin-top: 8px;
+    font-size: 14px;
+    text-align: center;
+    color: #333;
 }
 
 .video-label-top {
-  left: 10px;
+    left: 10px;
 }
 
 .video-label-left {
-  left: 35%;
+    left: 35%;
 }
 
 .video-label-right {
-  left: 68%;
+    left: 68%;
 }
 
 .footer .icon-link {
@@ -82,37 +84,28 @@ video {
 }
 
 .dnerf {
-  font-variant: small-caps;
+    font-variant: small-caps;
 }
 
-
 .teaser .hero-body {
-  padding-top: 0;
-  padding-bottom: 3rem;
+    padding-top: 0;
+    padding-bottom: 3rem;
 }
 
 .teaser {
-  font-family: 'Google Sans', sans-serif;
-}
-
-
-.publication-title {
+    font-family: 'Google Sans', sans-serif;
 }
 
 .publication-banner {
-  max-height: parent;
-
+    max-height: parent;
 }
 
 .publication-banner video {
-  position: relative;
-  left: auto;
-  top: auto;
-  transform: none;
-  object-fit: fit;
-}
-
-.publication-header .hero-body {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    object-fit: fit;
 }
 
 .publication-title {
@@ -135,12 +128,8 @@ video {
     font-weight: bolder;
 }
 
-.publication-authors {
-}
-
 .publication-authors a {
-/*   color: #ff9b00;*/
-  color: #0071bc;
+    color: #0071bc;
 }
 
 .publication-authors a:hover {
@@ -148,14 +137,7 @@ video {
 }
 
 .author-block {
-  display: inline-block;
-}
-
-.publication-banner img {
-}
-
-.publication-authors {
-  /*color: #4286f4;*/
+    display: inline-block;
 }
 
 .publication-video {
@@ -163,7 +145,6 @@ video {
     width: 100%;
     height: 0;
     padding-bottom: 56.25%;
-
     overflow: hidden;
     border-radius: 10px !important;
 }
@@ -176,107 +157,142 @@ video {
     height: 100%;
 }
 
-.publication-body img {
-}
-
 .results-carousel {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .results-carousel .item {
-  margin: 5px;
-  overflow: hidden;
-  border: 1px solid #bbb;
-  border-radius: 10px;
-  padding: 0;
-  font-size: 0;
+    margin: 5px;
+    overflow: hidden;
+    border: 1px solid #bbb;
+    border-radius: 10px;
+    padding: 0;
+    font-size: 0;
 }
 
 .results-carousel video {
-  margin: 0;
+    margin: 0;
 }
 
-
 .interpolation-panel {
-  background: #f5f5f5;
-  border-radius: 10px;
+    background: #f5f5f5;
+    border-radius: 10px;
 }
 
 .interpolation-panel .interpolation-image {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.interpolation-video-column {
+    width: 100%;
+    border-radius: 5px;
 }
 
 .interpolation-panel .slider {
-  margin: 0 !important;
-}
-
-.interpolation-panel .slider {
-  margin: 0 !important;
+    margin: 0 !important;
 }
 
 #interpolation-image-wrapper {
-  width: 100%;
-}
-#interpolation-image-wrapper img {
-  border-radius: 5px;
+    width: 100%;
 }
 
-/* Expandable Table Section Styles */
+#interpolation-image-wrapper img {
+    border-radius: 5px;
+}
+
 .toggle-link {
-  color: #4a90e2;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 1rem;
+    color: #4a90e2;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 .toggle-link:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .table-image-container {
-  width: 100%;
-  overflow-x: auto;
-  margin: 20px 0;
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
 }
 
 .table-image-container img {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .charts-container {
-  width: 100%;
-  margin: 20px 0;
+    width: 100%;
+    margin: 20px 0;
 }
 
 .charts-container img {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .caption-text {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 0.95rem;
-  color: #4a4a4a;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #4a4a4a;
 }
 
 .benefits-list {
-  margin-top: 20px;
-  padding-left: 20px;
+    margin-top: 20px;
+    padding-left: 20px;
 }
 
 .benefits-list li {
-  margin-bottom: 10px;
-  line-height: 1.6;
+    margin-bottom: 10px;
+    line-height: 1.6;
 }
 
 .hidden {
-  display: none;
+    display: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.image-wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container {
+    flex: 1;
+    text-align: center;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.image-container p {
+    margin-top: 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .image-wrapper {
+        flex-direction: column;
+    }
 }
