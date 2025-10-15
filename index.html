@@ -5,7 +5,8 @@
   <meta name="description" content="Value Flows">
   <meta name="keywords" content="Batch Online RL">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-      <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <!-- <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script> -->
+  <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
 
   <title>Value Flows</title>
 
@@ -35,10 +36,10 @@
     .benefits-list li { margin: 0.5rem 0; }
     .task-selector { margin: 2rem 0; }
     .task-selector .button { margin: 0.25rem; }
-    .video-container { margin: 2rem 0; }
+    .video-container { margin: 1rem 0; }
     .video-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; }
     .video-wrapper { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-    .video-item { flex: 1; min-width: 250px; max-width: 350px; }
+    .video-item { flex: 1; min-width: 250px; max-width: 2048px; }
     .video-item video { width: 100%; height: auto; border-radius: 8px; }
     .video-label { text-align: center; margin-top: 0.5rem; font-weight: bold; }
   </style>
@@ -52,15 +53,33 @@
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">Value Flows</h1>
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><a href="https://dblp.org/pid/323/8972.html">Perry Dong*</a>,</span>
-            <span class="author-block"><a href="https://chongyi-zheng.github.io/">Chongyi Zheng*</a>,</span>
-            <span class="author-block"><a href="https://ai.stanford.edu/~cbfinn/">Chelsea Finn</a>,</span>
-            <span class="author-block"><a href="https://dorsa.fyi/">Dorsa Sadigh</a>,</span>
-            <span class="author-block"><a href="https://ben-eysenbach.github.io/">Benjamin Eysenbach</a></span>
+            <span class="author-block">
+              <a href="https://dblp.org/pid/323/8972.html">Perry Dong*</a><sup>1</sup>&emsp;
+            </span>
+            <span class="author-block">
+              <a href="https://chongyi-zheng.github.io/">Chongyi Zheng*</a><sup>2</sup>&emsp;
+            </span>
+            <span class="author-block">
+              <a href="https://ai.stanford.edu/~cbfinn/">Chelsea Finn</a><sup>1</sup>&emsp;
+            </span>
+            <span class="author-block">
+              <a href="https://dorsa.fyi/">Dorsa Sadigh</a><sup>1</sup>&emsp;
+            </span>
+            <span class="author-block">
+              <a href="https://ben-eysenbach.github.io/">Benjamin Eysenbach</a><sup>2</sup>&emsp;</span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Stanford University, Princeton University</span>
+            <span class="author-block">
+              <sup>1</sup>Stanford University&emsp;
+              <sup>2</sup>Princeton University
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              (*Equal contribution)
+            </span>
           </div>
 
           <div class="column has-text-centered">
@@ -70,11 +89,7 @@
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Paper</span>
                 </a>
-                <a href="https://arxiv.org/abs/2510.07650" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>ArXiv</span>
-                </a>
-                <a href="https://github.com/chongyi-zheng/value-flows" class="external-link button is-normal is-rounded is-dark">
+                <a href="https://github.com/chongyi-zheng/" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-code"></i></span>
                   <span>Code</span>
                 </a>
@@ -87,7 +102,7 @@
   </div>
 </section>
 
-<section class="section">
+<!-- <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -100,14 +115,14 @@ While most reinforcement learning methods today flatten the distribution of futu
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- <section class="hero is-small">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
         <div class="publication-image" align="center">
-          <img src="static/images/value_flows.jpg" alt="Teaser image" width="60%">
+          <img src="static/images/value_flows.png" alt="Teaser image" width="60%">
         </div>
       </div>
     </div>
@@ -116,29 +131,29 @@ While most reinforcement learning methods today flatten the distribution of futu
 
 
 <section class="section">
+  <div class="publication-image" align="center">
+    <img src="static/images/value_flows.png" alt="Teaser image" width="55%">
+  </div>
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Motivation</h2>
+        <h3 class="title is-3">Overview</h3>
 
-        <div class="publication-image" align="center">
-          <img src="static/images/value_flows.jpg" alt="Teaser image" width="60%">
-        </div>
+        <!-- <div class="publication-image" align="center">
+          <img src="static/images/value_flows.png" alt="Teaser image" width="60%">
+        </div> -->
         
         <div class="content has-text-justified">
-          <p><b>Problem:</b> Many of the recent successes in reinforcement learning have focused on estimating future returns as a single scalar. However, distributional RL methods can provide stronger learning signals through exploit the full distribution of returns. Predominant
-             methods for estimating the return distribution
-model it as a categorical distribution over discrete bins or estimating a
-finite number of quantiles, but this leaves questions unanswered about the
-fine-grained structure of the return distribution.</p>
-
-          <p>We propose<b> Value Flows:</b> </p>
-        
-            
-        <ul class="benefits-list">
-          <li>Value Flows is a framework for modeling the return distribution using modern, flexible flow-based models.</li>
-          <li>Value Flows optimizes a distributional flow-matching objective that generates probability density paths satisfying the distributional Bellman equation automatically, which can be used to estimate the full future return distributions.</li>
-        </ul>
+          <p>
+          <!-- <b>Value Flows</b> is an RL algorithm that models the full return distribution via flow-matching and enforces Bellman consistency at every transition. -->
+          While many of the recent successes in reinforcement learning (RL) have focused on estimating future returns as a single scalar, distributional RL methods provide stronger learning signals through exploit the full return distributions. <b>Value Flows</b> is a distributional RL algorithm that models the full return distribution via flow-matching and enforces Bellman consistency at every transition.
+          <!-- Prior methods for estimating the return distribution model it as a categorical distribution over discrete bins or estimating a finite number of quantiles.</p> -->
+          <!-- <p>We propose<b> Value Flows:</b> </p> -->
+          <!-- <ul class="benefits-list">
+            <li>Value Flows is a framework for modeling the return distribution using modern, flexible flow-based models.</li>
+            <li>Value Flows optimizes a distributional flow-matching objective that generates probability density paths satisfying the distributional Bellman equation automatically, which can be used to estimate the full future return distributions.</li>
+          </ul> -->
+          </p>
         </div>
       </div>
     </div>
@@ -150,8 +165,8 @@ fine-grained structure of the return distribution.</p>
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Key Idea</h2>   
-        
+        <h3 class="title is-3">Key Ideas</h3>   
+        <div class="content has-text-justified">
         <!-- <a href="#" class="toggle-link" id="toggleTable3">
           Click to see the full algorithm
         </a>
@@ -163,61 +178,69 @@ fine-grained structure of the return distribution.</p>
         </div>
         
         <br><br> -->
-
-        
-
-        <p>The objective of Value Flows consists of three main components: (1) the vector field estimating the
-return distribution, (2) the confidence weight incorporating aleatoric uncertainty, and (3) the flow
-policy selecting actions.</p>
-
-        <br>
-
-
-        <p><b>Vector field: </b> learn a vector field that generates probability density paths satisfying the distributional Bellman equation, including a regularization term for stability. </p>
-           <!-- Distributional conditional flow matching (DCFM) + \( \lambda \) Bootstrapped conditional flow matching (BCFM) </p> -->
-
-         <!-- <img src="./static/images/conditional.png" width="100%">
-         <img src="./static/images/bootstrapped.png" width="80%"> -->
-
-         <br>
-        
-
-         <p><b>Confidence weight: </b> use return uncertainty information to prioritize
-learning a more accurate return distribution at certain transitions: a higher return variance indicates a
-demand for more accurate return estimation at that transition. </p>
-<!-- We estimate the return variance \( \text{Var}(Z^{\pi}(s, a)) \) using a first-order Taylor approximation on the corresponding (diffeomorphic) flow \( \phi: \mathbb{R} \times [0, 1] \times \mathcal{S} \times \mathcal{A} \to \mathbb{R} \) of the vector field \( v \).</p> -->
-
-          <br>
-          <!-- <div align="center">
-         <img src="./static/images/prop_3.png" width="70%">
-         </div> -->
-
-         <!-- <br> -->
-
-         <!-- <p>We define the confidence weight \( w(s, a, \epsilon) = \sigma \left( - \tau \left/ \left\lvert \frac{\partial \phi}{\partial \epsilon} (\epsilon \mid 1, s, a) \right\rvert \right. \right) + 0.5 \) and apply this weighting to the vector field loss. </p> -->
-
-
-        <!-- <br> -->
-
-
-        <p><b>Policy selecting action: </b> We consider two different behavioral-regularized policy extraction strategies for offline RL and offline-to-online RL. For offline RL, we use rejection sampling to maximize Q estimates while implicitly imposing a KL constraint toward a fixed behavioral cloning (BC) policy. For online fine-tuning in offline-to-online RL, following <a src="https://arxiv.org/abs/2502.02538">prior work</a>, we learn a stochastic one-step policy to maximize the Q estimates while distilling it toward the fixed BC flow policy. </p>
-
-
-      </div>
+        <p>Value Flows consists of three main components: <em>(1)</em> the vector field estimating the return distribution, <em>(2)</em> the confidence weight prioritizing learning the return distribution at uncertain transitions, and <em>(3)</em> the flow policy for selecting actions.</p>
+        <p>
+          <b>Return vector fields: </b>
+          We formulate a distributional flow-matching objective to learn return vector fields satisfying the distributional Bellman equation automatically. Additionally, we including a regularization term for stability in practice. 
+        </p>
+        <p>
+          <b>Confidence weights: </b> Our confidence weights prioritize learning a more accurate return distribution at transitions with higher return variance, as estimated by the return vector field.
+        </p>
+        <p>
+          <b>Policy extractions: </b>
+          <ul class="benefits-list">
+            <li>For offline RL, we use rejection sampling to maximize Q estimates while implicitly imposing a KL constraint toward a fixed flow behavioral cloning (BC) policy.</li>
+            <li>For online fine-tuning in offline-to-online RL, we learn a stochastic one-step policy to maximize the Q estimates while distilling it toward the fixed BC flow policy. </li>
+          </ul>
+        </p>
+        </div>
     </div>
   </div>
 </section>
-
-
-
 
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Experiments</h2>  
+        <div class="video-container">
+          <h3 class="title is-3">Visualizing Return Distributions</h3>
+          <!-- <h3 class="video-title">Visualizing Return Distributions</h3> -->
+          <div class="video-wrapper">
+            <div class="video-item">
+              <video id="vfHistograms" playsinline muted autoplay loop controls poster="static/images/value_flows.png">
+                <source src="static/videos/value_flows_histograms.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <!-- <div class="video-label">Return Histograms</div> -->
+            </div>
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              <em>Column 1:</em> The policy completes the task of closing the window and closing the drawer using the buttons to lock and unlock them. 
+            </p>
+            <p>
+              <em>Column 2:</em> C51 discretizes the return distribution and predicts a noisy multi-modal distribution.
+            </p>
+            <p>
+              <em>Column 3:</em> CODAC uses a finite number of quantiles to represent the return distribution and collapses to a single return mode.
+            </p>
+            <p>
+              <em>Column 4 and 5:</em> Value Flows infers a smooth return histogram resembling the ground-truth return distribution, achieving \(3 \times\) lower 1-Wasserstein distance averaged across time than alternative methods.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-3">Experiments</h3>  
         
-        <h3 class="title is-4">Offline RL</h3>
+        <h4 class="title is-4">Offline RL</h4>
 
         <div class="table-image-container">
             <img src="static/images/results_table_avg.png" alt="Offline RL results table aggregated across domains">
