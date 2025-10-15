@@ -16,6 +16,18 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   
   <style>
+    /* Tighter vertical rhythm */
+    .section.compact { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+    /* .hero.is-small .hero-body { padding-top: 1.25rem; padding-bottom: 1.25rem; } */
+
+    /* Reduce heading spacing inside sections */
+    /* .section.compact .title { margin-bottom: 1rem; } */
+    .section.compact .title.is-3 { margin-top: 0.1rem; }
+
+    /* Kill extra trailing space from last elements */
+    .section.compact .content > :last-child,
+    .section.compact .publication-image:last-child,
+    .section.compact .video-container:last-child { margin-bottom: 0; }
     .publication-title { font-size: 3rem; font-weight: bold; }
     .publication-authors { margin-top: 1rem; }
     .author-block { display: inline-block; margin: 0 0.5rem; }
@@ -25,8 +37,8 @@
     .publication-image { margin: 2rem 0; }
     hr.rounded { border: 2px solid #e5e5e5; border-radius: 5px; margin: 3rem 0; }
     .hidden { display: none; }
-    .toggle-link { color: #3273dc; text-decoration: underline; cursor: pointer; display: inline-block; margin-bottom: 1rem; }
-    .toggle-link:hover { color: #1f5bb8; }
+    .toggle-link { color: #1f77b4; cursor: pointer; display: inline-block; margin-bottom: 1rem; }
+    .toggle-link:hover { color: #1f77b4; }
     .table-image-container { margin: 1.5rem 0; }
     .table-image-container img { width: 100%; height: auto; }
     .charts-container { margin: 1.5rem 0; }
@@ -129,10 +141,9 @@ While most reinforcement learning methods today flatten the distribution of futu
   </div>
 </section> -->
 
-
-<section class="section">
+<section class="section compact">
   <div class="publication-image" align="center">
-    <img src="static/images/value_flows.png" alt="Teaser image" width="55%">
+    <img src="static/images/value_flows.png" alt="Teaser image" width="50%">
   </div>
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -161,7 +172,7 @@ While most reinforcement learning methods today flatten the distribution of futu
 </section>
 
 
-<section class="section">
+<section class="section compact">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
@@ -198,7 +209,7 @@ While most reinforcement learning methods today flatten the distribution of futu
   </div>
 </section>
 
-<section class="section">
+<section class="section compact">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
@@ -225,7 +236,7 @@ While most reinforcement learning methods today flatten the distribution of futu
               <em>Column 3:</em> CODAC uses a finite number of quantiles to represent the return distribution and collapses to a single return mode.
             </p>
             <p>
-              <em>Column 4 and 5:</em> Value Flows infers a smooth return histogram resembling the ground-truth return distribution, achieving \(3 \times\) lower 1-Wasserstein distance averaged across time than alternative methods.
+              <em>Column 4 and 5:</em> Value Flows infers a smooth return histogram resembling the ground-truth return distribution, achieving \(3\times\) lower 1-Wasserstein distance averaged across time than alternative methods.
             </p>
           </div>
         </div>
@@ -234,162 +245,112 @@ While most reinforcement learning methods today flatten the distribution of futu
   </div>
 </section>
 
-<section class="section">
+<section class="section compact">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h3 class="title is-3">Experiments</h3>  
-        
+        <h3 class="title is-3">Offline and offline-to-online evaluations</h3>  
         <h4 class="title is-4">Offline RL</h4>
-
-        <div class="table-image-container">
-            <img src="static/images/results_table_avg.png" alt="Offline RL results table aggregated across domains">
-          </div>
-        
+        <div class="content has-text-justified">
         <a href="#" class="toggle-link" id="toggleTable">
           Click to see the full table (<span id="taskCount">62</span> tasks)
-        </a>
-
-        <div id="tableContainer" class="hidden">
-          <div class="table-image-container">
-            <img src="static/images/results_table.png" alt="Offline results table">
+          <div id="tableContainer" class="hidden">
+            <figure class="table-image-container">
+              <img src="static/images/results_table.png" alt="Offline results table">
+            </figure>
           </div>
-
-        </div>
-
-        <p class="caption-text">
-          <strong>Offline RL results averaged over 8 seeds on 62 continous control tasks from OGBench and D4RL.</strong>
+        </a>
+        <figure class="table-image-container">
+          <img src="static/images/results_table_avg.png" alt="Offline RL results table aggregated across domains">
+          <figcaption class="title is-6" style="font-style: normal;">
+            Offline RL results averaged over 8 seeds on 62 continous control tasks from OGBench and D4RL.
+          </figcaption>
+        </figure>
+        <p>
+          <ul class="benefits-list">
+            <li>Value flows matches or outperforms all baselines on \(9\) out of \(11\) domains. </li>
+            <li>On those more challenging state-based tasks, Value Flows achieves \( 1.6 \times\) higher success rates than the best performing baseline.</li>
+            <li>Value Flows is able to outperform the best baseline by \(1.24\times\) using RGB images directly.</li>
+          </ul>
         </p>
 
-        <ul class="benefits-list">
-          <li>Value flows achieves the best or near-best performance on 9 out of 11 domains. </li>
-          <li>On those more challenging state-based tasks, Value Flows achieves 1.6× higher success rates than the best performing baseline.</li>
-        </ul>
-
-        <br><br>
-
-        <h3 class="title is-4">Offline-to-online RL</h3>
-
+        <h4 class="title is-4">Offline-to-online RL</h4>
         <!-- <div class="table-image-container" width="10%">
             <img src="static/images/offline_to_online_together.jpg" alt="Online RL results table">
           </div> -->
-
+        <a href="#" class="toggle-link" id="toggleTable2">
+          Click to see the full table (<span id="taskCount2">6</span> tasks)
+          <div id="tableContainer2" class="hidden">
+            <figure class="table-image-container">
+              <img src="static/images/online_results_table.png" alt="Online RL results table">
+            </figure>
+            <figure class="charts-container">
+              <img src="static/images/offline_to_online.jpg" alt="Online training curves">
+            </figure>
+            <figcaption class="title is-6" style="font-style: normal;">
+              Offline-to-online RL results averaged over 8 seeds on 6 continous control tasks from OGBench.
+            </figcaption>
+          </div>
+        </a>
         <div class="publication-image" align="center">
           <img src="static/images/offline_to_online_together.jpg" alt="Online RL results table" width="60%">
         </div>
-        
-        <a href="#" class="toggle-link" id="toggleTable2">
-          Click to see the full table (<span id="taskCount2">6</span> tasks)
-        </a>
-
-        <div id="tableContainer2" class="hidden">
-          <div class="table-image-container">
-            <img src="static/images/online_results_table.png" alt="Online RL results table">
-          </div>
-
-          <div class="charts-container">
-            <img src="static/images/offline_to_online.jpg" alt="Online training curves">
-          </div>
-        </div>
-
-        <p class="caption-text">
-          <strong>Offline-to-online RL results averaged over 8 seeds on 6 continous control tasks from OGBench.</strong>
+        <p>
+          <ul class="benefits-list">
+            <li>Value Flows continues outperforming prior state-of-the-art RL and distributional RL methods using online interactions.</li>
+            <li>Value Flows can be used without any modifications to the vector field objective.</li>
+          </ul>
         </p>
-
-        <ul class="benefits-list">
-          <li>Value Flows demonstrates strong performance in online settings and achieves the best performance averaged over all the environments.</li>
-          <li>Value Flows can be used without any modifications to the vector field objective.</li>
-        </ul>
-
-        <br><br>
-
-        <h3 class="title is-4">Is Value Flows sensitive to hyperparameters? </h3>
-
-        <div class="container">
-    <div class="image-wrapper" style="display: flex; gap: 20px;">
-        <div class="image-container" style="flex: 1; text-align: center;">
-            <img src="static/images/cube-double_puzzle-3x3_steps.png" style="width: 100%;">
-            <p>Number of flow steps in the Euler method</p>
-        </div>
-        
-        <div class="image-container" style="flex: 1; text-align: center;">
-            <img src="static/images/cube-double_puzzle-3x3_rejection.png" style="width: 100%;">
-            <p>Number of candidates used in rejection sampling </p>
-        </div>
-    </div>
-    <br>
-    <ul class="benefits-list">
-          <li>Value Flows is robust to common hyperparameters such as number of flow steps and number of candidates in rejection sampling.</li>
-          <li>One only needs to tune the regularization loss coefficient and confidence weight. </li>
-        </ul>
-    <p></p>
-</div>
-
       </div>
     </div>
   </div>
 </section>
 
-<!-- <section class="section">
+<section class="section compact">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Sample Rollouts</h2>
-        <p>
-          Select one of the tasks below to view trajectories at the beginning, middle, and end of running batch online RL.
-          <br><br>
-        </p>
-        <div class="content has-text-justified">
-          <div class="task-selector has-text-centered">
-            <button class="button is-light" onclick="changeTask('lift', 'static/videos/lift_start.mp4', 'static/videos/lift_mid.mp4', 'static/videos/lift_last.mp4')">Lift</button>
-            <button class="button is-light" onclick="changeTask('can', 'static/videos/can_start.mp4', 'static/videos/can_mid.mp4', 'static/videos/can_last.mp4')">Can</button>
-            <button class="button is-light" onclick="changeTask('square', 'static/videos/square_start.mp4', 'static/videos/square_mid.mp4', 'static/videos/square_last.mp4')">Square</button>
-            <button class="button is-light" onclick="changeTask('tape', 'static/videos/tape_start.mp4', null, 'static/videos/tape_last.mp4')">Tape</button>
-          </div>
-          
-          <center>
-            <div id="task-video" class="video-container">
-              <h4 id="video-title" class="video-title"></h4>
-              <div class="video-wrapper">
-                <div class="video-item" id="task-video-item-1">
-                  <video id="task-video-player-1" autoplay loop muted controls>
-                    <source src="" type="video/mp4">
-                  </video>
-                  <div class="video-label">Beginning (1x)</div>
-                </div>
-                <div class="video-item" id="task-video-item-2">
-                  <video id="task-video-player-2" autoplay loop muted controls>
-                    <source src="" type="video/mp4">
-                  </video>
-                  <div class="video-label">Middle (1x)</div>
-                </div>
-                <div class="video-item" id="task-video-item-3">
-                  <video id="task-video-player-3" autoplay loop muted controls>
-                    <source src="" type="video/mp4">
-                  </video>
-                  <div class="video-label">End (1x)</div>
-                </div>
+        <h4 class="title is-4">The Key Components of Value Flows</h4>
+        <div class="container">
+          <div class="content has-text-justified">
+            <div class="image-wrapper" style="display: flex; gap: 12px; align-items: flex-start;">
+              <div class="image-container" style="flex: 1; text-align: center;">
+                  <img src="static/images/cube-double_puzzle-3x3_lambda.png" style="width: 99%;">
+                  <figcaption class="title is-6" style="font-style: normal; text-align: center;">
+                    Regularizing the flow-matching loss is important.
+                  </figcaption>
+              </div>
+              <div class="image-container" style="flex: 1; text-align: center;">
+                  <img src="static/images/cube-double_puzzle-3x3_tau.png" style="width: 100%;">
+                  <figcaption class="title is-6" style="font-style: normal; text-align: center;">
+                    Reweighing the flow-matching objective boosts success rates.
+                  </figcaption>
               </div>
             </div>
-          </center>
+            <!-- <p>
+              <ul class="benefits-list">
+                <li>Value Flows is robust to common hyperparameters such as number of flow steps and number of candidates in rejection sampling.</li>
+                <li>One only needs to tune the regularization loss coefficient and confidence weight. </li>
+              </ul>
+            </p> -->
+          </div>
         </div>
       </div>
     </div>
   </div>
-</section> -->
+</section>
 
-
-<section class="section" id="BibTeX">
+<section class="section compact" id="BibTeX">
   <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
+    <h3 class="title">BibTeX</h3>
     <pre><code>@misc{dong2025value,
-      title={Value Flows}, 
-      author={Perry Dong and Chongyi Zheng and Chelsea Finn and Dorsa Sadigh and Benjamin Eysenbach},
-      year={2025},
-      eprint={2510.07650},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2510.07650}, 
+  title={Value Flows}, 
+  author={Perry Dong and Chongyi Zheng and Chelsea Finn and Dorsa Sadigh and Benjamin Eysenbach},
+  year={2025},
+  eprint={2510.07650},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2510.07650},
 }</code></pre>
   </div>
 </section>
