@@ -143,7 +143,7 @@ While most reinforcement learning methods today flatten the distribution of futu
 
 <section class="section compact">
   <div class="publication-image" align="center">
-    <img src="static/images/value_flows.png" alt="Teaser image" width="50%">
+    <img src="static/images/value_flows.png" alt="Teaser image" width="30%">
   </div>
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -156,14 +156,15 @@ While most reinforcement learning methods today flatten the distribution of futu
         
         <div class="content has-text-justified">
           <p>
-          <!-- <b>Value Flows</b> is an RL algorithm that models the full return distribution via flow-matching and enforces Bellman consistency at every transition. -->
-          While many of the recent successes in reinforcement learning (RL) have focused on estimating future returns as a single scalar, distributional RL methods provide stronger learning signals through exploit the full return distributions. <b>Value Flows</b> is a distributional RL algorithm that models the full return distribution via flow-matching and enforces Bellman consistency at every transition.
-          <!-- Prior methods for estimating the return distribution model it as a categorical distribution over discrete bins or estimating a finite number of quantiles.</p> -->
-          <!-- <p>We propose<b> Value Flows:</b> </p> -->
-          <!-- <ul class="benefits-list">
-            <li>Value Flows is a framework for modeling the return distribution using modern, flexible flow-based models.</li>
-            <li>Value Flows optimizes a distributional flow-matching objective that generates probability density paths satisfying the distributional Bellman equation automatically, which can be used to estimate the full future return distributions.</li>
-          </ul> -->
+         The goal of RL is to get high rewards, and most RL algorithms have to predict how much reward you'll get in the future. However, often there is some uncertainty in these rewards --- in some states, you might sometimes get high rewards and sometimes get low rewards. 
+</p>
+
+<p>
+In this paper, we use modern, flexible generative AI models (flow matching) to predict the full distribution over rewards. Unlike prior methods, our method does not require rounding the rewards into discrete bins. 
+</p>
+
+<p>
+Intuitively, we can think about the distribution over values as flowing through time (see Figure above). We prove that this flow has a consistency equation, somewhat analogous to the Bellman equation. This means that we can update the flow directly using a certain loss, without converting back to value predictions.
           </p>
         </div>
       </div>
@@ -189,16 +190,16 @@ While most reinforcement learning methods today flatten the distribution of futu
         </div>
         
         <br><br> -->
-        <p>Value Flows consists of three main components: <em>(1)</em> the vector field estimating the return distribution, <em>(2)</em> the confidence weight prioritizing learning the return distribution at uncertain transitions, and <em>(3)</em> the flow policy for selecting actions.</p>
+        <!-- <p>Value Flows consists of three main components: <em>(1)</em> the vector field estimating the return distribution, <em>(2)</em> the confidence weight prioritizing learning the return distribution at uncertain transitions, and <em>(3)</em> the flow policy for selecting actions.</p> -->
         <p>
-          <b>Return vector fields: </b>
+          <b>🌊Return vector fields: </b>
           We formulate a distributional flow-matching objective to learn return vector fields satisfying the distributional Bellman equation automatically. Additionally, we including a regularization term for stability in practice. 
         </p>
         <p>
-          <b>Confidence weights: </b> Our confidence weights prioritize learning a more accurate return distribution at transitions with higher return variance, as estimated by the return vector field.
+          <b>⚖️Confidence weights: </b> Our confidence weights prioritize learning a more accurate return distribution at transitions with higher return variance, as estimated by the return vector field.
         </p>
         <p>
-          <b>Policy extractions: </b>
+          <b>🎯 Policy extraction: </b>
           <ul class="benefits-list">
             <li>For offline RL, we use rejection sampling to maximize Q estimates while implicitly imposing a KL constraint toward a fixed flow behavioral cloning (BC) policy.</li>
             <li>For online fine-tuning in offline-to-online RL, we learn a stochastic one-step policy to maximize the Q estimates while distilling it toward the fixed BC flow policy. </li>
@@ -293,7 +294,7 @@ While most reinforcement learning methods today flatten the distribution of futu
           </figcaption>
         </div>
         <div class="publication-image" align="center">
-          <img src="static/images/offline_to_online_together.jpg" alt="Online RL results table" width="60%">
+          <img src="static/images/offline_to_online_together.gif" alt="Online RL results table" width="60%">
         </div>
         <p>
           <ul class="benefits-list">
