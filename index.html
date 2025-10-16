@@ -54,6 +54,45 @@
     .video-item { flex: 1; min-width: 250px; max-width: 2048px; }
     .video-item video { width: 100%; height: auto; border-radius: 8px; }
     .video-label { text-align: center; margin-top: 0.5rem; font-weight: bold; }
+
+    /* Grid that both the video and the caption agree on */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px; /* keep this the same for video and caption */
+    }
+
+    /* Make the video span the full width of the grid */
+    .video-grid > .video {
+      grid-column: 1 / -1;
+      width: 100%;
+      display: block;
+      border-radius: 8px; /* optional */
+    }
+
+    /* Caption uses the exact same 5-column track list */
+    .caption-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      font-size: 0.95rem; /* optional */
+      line-height: 1.4;
+    }
+
+    /* Responsive: collapse columns on smaller screens */
+    @media (max-width: 1024px) {
+      .video-grid,
+      .caption-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .video-grid,
+      .caption-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -214,29 +253,20 @@ While most reinforcement learning methods today flatten the distribution of futu
       <div class="column is-full-width">
         <div class="video-container">
           <h3 class="title is-3">Visualizing Return Distributions</h3>
-          <!-- <h3 class="video-title">Visualizing Return Distributions</h3> -->
-          <div class="video-wrapper">
-            <div class="video-item">
-              <video id="vfHistograms" playsinline muted autoplay loop controls poster="static/images/value_flows.png">
-                <source src="static/videos/value_flows_histograms.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              <!-- <div class="video-label">Return Histograms</div> -->
+
+          <div class="video-grid">
+            <video class="video" id="vfHistograms" playsinline muted autoplay loop controls poster="static/images/value_flows.png">
+              <source src="static/videos/value_flows_histograms.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            <div class="caption-grid">
+              <div>The policy completes the task of closing the window and closing the drawer using the buttons to lock and unlock them.</div>
+              <div>C51 discretizes the return distribution and predicts a noisy multi-modal distribution.</div>
+              <div>CODAC uses a finite number of quantiles to represent the return distribution and collapses to a single return mode.</div>
+              <div>Value Flows infers a smooth return histogram resembling the ground-truth distribution.</div>
+              <div>Quantatively, Value Flows achieves \(3\times\) lower \(1\)-Wasserstein distance averaged across time than alternatives.</div>
             </div>
-          </div>
-          <div class="content has-text-justified">
-            <p>
-              <em>Column 1:</em> The policy completes the task of closing the window and closing the drawer using the buttons to lock and unlock them. 
-            </p>
-            <p>
-              <em>Column 2:</em> C51 discretizes the return distribution and predicts a noisy multi-modal distribution.
-            </p>
-            <p>
-              <em>Column 3:</em> CODAC uses a finite number of quantiles to represent the return distribution and collapses to a single return mode.
-            </p>
-            <p>
-              <em>Column 4 and 5:</em> Value Flows infers a smooth return histogram resembling the ground-truth return distribution, achieving \(3\times\) lower 1-Wasserstein distance averaged across time than alternative methods.
-            </p>
           </div>
         </div>
       </div>
@@ -256,7 +286,7 @@ While most reinforcement learning methods today flatten the distribution of futu
         </a>
         <div id="tableContainer" class="hidden">
           <figure class="table-image-container">
-            <img src="static/images/results_table.png" alt="Offline results table">
+            <img src="static/images/results_table.jpg" alt="Offline results table">
           </figure>
         </div>
         <figure class="table-image-container">
