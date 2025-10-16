@@ -101,7 +101,7 @@
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Paper</span>
                 </a>
-                <a href="https://github.com/chongyi-zheng/" class="external-link button is-normal is-rounded is-dark">
+                <a href="https://github.com/chongyi-zheng/value-flows" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-code"></i></span>
                   <span>Code</span>
                 </a>
@@ -142,29 +142,27 @@ While most reinforcement learning methods today flatten the distribution of futu
 </section> -->
 
 <section class="section compact">
-  <div class="publication-image" align="center">
+  <!-- <div class="publication-image" align="center">
     <img src="static/images/value_flows.png" alt="Teaser image" width="30%">
-  </div>
+  </div> -->
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h3 class="title is-3">Overview</h3>
 
-        <!-- <div class="publication-image" align="center">
-          <img src="static/images/value_flows.png" alt="Teaser image" width="60%">
-        </div> -->
+        <figure class="image is-pulled-right ml-4 mb-2" style="width:50%;">
+          <img src="static/images/value_flows.png" alt="Teaser image">
+        </figure>
         
         <div class="content has-text-justified">
           <p>
-         The goal of RL is to get high rewards, and most RL algorithms have to predict how much reward you'll get in the future. However, often there is some uncertainty in these rewards --- in some states, you might sometimes get high rewards and sometimes get low rewards. 
-</p>
-
-<p>
-In this paper, we use modern, flexible generative AI models (flow matching) to predict the full distribution over rewards. Unlike prior methods, our method does not require rounding the rewards into discrete bins. 
-</p>
-
-<p>
-Intuitively, we can think about the distribution over values as flowing through time (see Figure above). We prove that this flow has a consistency equation, somewhat analogous to the Bellman equation. This means that we can update the flow directly using a certain loss, without converting back to value predictions.
+            The goal of RL is to get high rewards, and most RL algorithms have to predict how much reward you'll get in the future. However, often there is some uncertainty in these rewards --- in some states, you might sometimes get high rewards and sometimes get low rewards. 
+          </p>
+          <p>
+            In this paper, we use modern, flexible generative AI models (flow matching) to predict the full distribution over future rewards. Unlike prior methods, our method does not require rounding the distribution over future rewards into discrete bins or predict a finite number of quantiles.
+          </p>
+          <p>
+            Intuitively, we can think of the distribution over values as flowing through time (see the figure). We prove that this flow has a consistency equation, analogous to the standard Bellman equation. This means that we can update the flow directly using a certain loss, without converting back to value predictions.
           </p>
         </div>
       </div>
@@ -324,16 +322,10 @@ Intuitively, we can think about the distribution over values as flowing through 
               <div class="image-container" style="flex: 1; text-align: center;">
                   <img src="static/images/cube-double_puzzle-3x3_tau.png" style="width: 100%;">
                   <figcaption class="title is-6" style="font-style: normal; text-align: center;">
-                    Reweighing the flow-matching objective boosts success rates.
+                    Reweighting the flow-matching objective boosts success rates.
                   </figcaption>
               </div>
             </div>
-            <!-- <p>
-              <ul class="benefits-list">
-                <li>Value Flows is robust to common hyperparameters such as number of flow steps and number of candidates in rejection sampling.</li>
-                <li>One only needs to tune the regularization loss coefficient and confidence weight. </li>
-              </ul>
-            </p> -->
           </div>
         </div>
       </div>
